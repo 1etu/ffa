@@ -1,0 +1,22 @@
+name: sdk
+version: 1.0
+main: net.hywave.BaseClass
+api-version: 1.8
+commands:
+  ping:
+    description: Check your and other players' ping
+    aliases: [latency, lag]
+  announcement:
+    description: Admin only
+  savepreset:
+    description: Save your current inventory layout as the default preset
+    usage: /savepreset
+  viewchanges:
+    description: View recent inventory layout changes
+    usage: /viewchanges
+  revertchanges:
+    description: Revert recent inventory changes
+    usage: /revertchanges
+  stats:
+    description: View player statistics
+    usage: /stats [player]
