@@ -24,6 +24,8 @@ public class BaseClass extends JavaPlugin {
         EventManager.initialize(this);
         InventoryManager.initialize(this);
         ProfileManager.initialize(this);
+        AnnouncementManager.initialize(this);
+
 
         EventManager.getInstance().registerEvent(new PlayerDeathListener(this));
         EventManager.getInstance().registerEvent(new PlayerJoinListener(this));
@@ -31,7 +33,6 @@ public class BaseClass extends JavaPlugin {
         EventManager.getInstance().registerEvent(new InventoryChangeGUI(this));
 
         BaseCommand cmdSys = new BaseCommand(this);
-        AnnouncementManager.initialize(this);
         cmdSys.registerCommands(new PingCommand());
         cmdSys.registerCommands(new AnnouncementCommand());
         cmdSys.registerCommands(new SavePresetCommand());
