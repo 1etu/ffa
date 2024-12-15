@@ -27,11 +27,11 @@ public class AnnouncementCommand {
     public void handleList(CommandSender sender, String[] args) {
         List<String> announcements = manager.getAnnouncements();
         if (announcements.isEmpty()) {
-            sender.sendMessage(ColorUtil.colorize("&c&lISSUE: &7No announcements found."));
+            sender.sendMessage(ColorUtil.colorize("&c&lWOAH! &7No announcements found."));
             return;
         }
 
-        sender.sendMessage(ColorUtil.colorize("&8&l» &7Current Announcements:"));
+        sender.sendMessage(ColorUtil.colorize("&7Current Announcements:"));
         for (int i = 0; i < announcements.size(); i++) {
             sender.sendMessage(ColorUtil.colorize("&8" + (i + 1) + ". &7" + announcements.get(i)));
         }
@@ -43,7 +43,6 @@ public class AnnouncementCommand {
         description = "Show announcement help"
     )
     public void handleDefault(CommandSender sender, String[] args) {
-        sender.sendMessage(ColorUtil.colorize("&8&l» &7Announcement Commands:"));
         sender.sendMessage(ColorUtil.colorize("&8• &7/announcement list &8- &7List all announcements"));
         sender.sendMessage(ColorUtil.colorize("&8• &7/announcement add <message> &8- &7Add new announcement"));
         sender.sendMessage(ColorUtil.colorize("&8• &7/announcement remove <index> &8- &7Remove an announcement"));
@@ -60,7 +59,7 @@ public class AnnouncementCommand {
     public void handleAdd(CommandSender sender, String[] args) {
         String message = String.join(" ", java.util.Arrays.copyOfRange(args, 1, args.length));
         manager.addAnnouncement(message);
-        sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS: &7Announcement added successfully."));
+        sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS! &7Announcement added successfully."));
     }
 
     @BaseCommand.SubCommand(
@@ -75,9 +74,9 @@ public class AnnouncementCommand {
         try {
             int index = Integer.parseInt(args[1]) - 1;
             manager.removeAnnouncement(index);
-            sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS: &7Announcement removed successfully."));
+            sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS! &7Announcement removed successfully."));
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            sender.sendMessage(ColorUtil.colorize("&c&lISSUE: &7Invalid announcement index."));
+            sender.sendMessage(ColorUtil.colorize("&c&lWOAH! &7Invalid announcement index."));
         }
     }
 
@@ -93,13 +92,13 @@ public class AnnouncementCommand {
         try {
             int interval = Integer.parseInt(args[1]);
             if (interval < 10) {
-                sender.sendMessage(ColorUtil.colorize("&c&lISSUE: &7Interval must be at least 10 seconds."));
+                sender.sendMessage(ColorUtil.colorize("&c&lWOAH! &7Interval must be at least 10 seconds."));
                 return;
             }
             manager.setInterval(interval);
-            sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS: &7Announcement interval set to " + interval + " seconds."));
+            sender.sendMessage(ColorUtil.colorize("&a&lSUCCESS! &7Announcement interval set to " + interval + " seconds."));
         } catch (NumberFormatException e) {
-            sender.sendMessage(ColorUtil.colorize("&c&lISSUE: &7Invalid interval value."));
+            sender.sendMessage(ColorUtil.colorize("&c&lWOAH! &7Invalid interval value."));
         }
     }
 }
